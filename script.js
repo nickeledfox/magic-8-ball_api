@@ -12,10 +12,14 @@ const API_ENDPOINT = 'https://yesno.wtf/api';
  *
  */
 
+const showAnswer = (answer) => {
+  document.getElementById('answer').innerHTML = `${answer}`;
+};
+
 const fetchAnswer = () => {
   fetch(API_ENDPOINT)
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => showAnswer(data.answer));
 };
 
 fetchAnswer();
