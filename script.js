@@ -1,25 +1,32 @@
+'use strict';
+
 const API_ENDPOINT = 'https://yesno.wtf/api';
 
-/**
- * STEPS:
- *
- * 1. Create a fetchAnswer function and call the API +
- * 2. Output the API's response +
- * 3. Attach fetchAnswer to an event listener +
- * 4. Clear output after 3 seconds
- * 5. Optional: add loading/error states
- *
- */
+const ball = document.getElementById('ball');
+const ballAnswer = document.getElementById('answer');
+const input = document.getElementById('input');
+
+const cleanInput = () => {
+  setTimeout(() => {
+    ballAnswer.innerHTML = '';
+    input.value = '';
+  }, 1800);
+};
 
 const showAnswer = (answer) => {
-  setTimeout(() => {
-    document.getElementById('answer').innerHTML = `${answer}`;
-    document.getElementById('ball').classList.remove('shake__ball');
-  }, 1000);
+  if (input.value != '') {
+    setTimeout(() => {
+      ballAnswer.innerHTML = `${answer}`;
+      ball.classList.remove('shake__ball');
+      cleanInput();
+    }, 1000);
+  } else {
+    ballAnswer.innerHTML = 'Ask question!';
+  }
 };
 
 const fetchAnswer = () => {
-  document.getElementById('ball').classList.add('shake__ball');
+  ball.classList.add('shake__ball');
 
   fetch(API_ENDPOINT)
     .then((response) => response.json())
