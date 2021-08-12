@@ -40,9 +40,18 @@
   position: absolute;
   left: 50%;
   top: 60%;
-  border-left: 55px solid transparent;
-  border-right: 55px solid transparent;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 90px solid #3f04ca;
+  -webkit-transform: translate(-50%, -50%) rotate(0deg);
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: ease-in all 0.2s;
   opacity: 0;
+  transition: opacity 1s;
+}
+
+.show {
+  opacity: 1;
 }
 
 .ball__answer {
@@ -71,14 +80,6 @@
   opacity: 1;
   -webkit-transform: translate(-50%, -50%) rotate(0deg);
   transform: translate(-50%, -50%) rotate(0deg);
-  transition: ease-in all 0.2s;
-}
-
-.ball .ball__triangle {
-  border-top: 90px solid #3f04ca;
-  -webkit-transform: translate(-50%, -50%) rotate(0deg);
-  transform: translate(-50%, -50%) rotate(0deg);
-  opacity: 1;
   transition: ease-in all 0.2s;
 }
 
