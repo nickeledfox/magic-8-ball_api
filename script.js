@@ -1,31 +1,48 @@
 'use strict';
 
+//API
 const API_ENDPOINT = 'https://yesno.wtf/api';
+
+// FLAGS
+let isReqInProgress = false;
 
 const ball = document.getElementById('ball');
 const ballAnswer = document.getElementById('answer');
 const input = document.getElementById('input');
+const button = document.getElementById('button');
+
+const checkRequest = (value) => {
+  isReqInProgress = value;
+};
+
+const buttonState = (disabling) => {
+  if (disabling) {
+    button.setAttribute('disabled', 'disabled');
+  } else {
+    button.removeAttribute('disabled');
+  }
+};
 
 const cleanInput = () => {
   setTimeout(() => {
     ballAnswer.innerHTML = '';
     input.value = '';
-  }, 1800);
+    checkRequest(false);
+    buttonState(false);
+  }, 2000);
 };
 
 const showAnswer = (answer) => {
-  if (input.value != '') {
-    setTimeout(() => {
-      ballAnswer.innerHTML = `${answer}`;
-      ball.classList.remove('shake__ball');
-      cleanInput();
-    }, 1000);
-  } else {
-    ballAnswer.innerHTML = 'Ask question!';
-  }
+  setTimeout(() => {
+    ballAnswer.innerHTML = `${answer}`;
+    ball.classList.remove('shake__ball');
+    cleanInput();
+  }, 1000);
 };
 
 const fetchAnswer = () => {
+  checkRequest(true);
+  buttonState(true);
   ball.classList.add('shake__ball');
 
   fetch(API_ENDPOINT)
@@ -33,12 +50,16 @@ const fetchAnswer = () => {
     .then((data) => showAnswer(data.answer));
 };
 
+const getAnswer = () => {
+  if (isReqInProgress) return;
+  if (!input.value) return;
+  fetchAnswer();
+};
+
 const handleKeyEnter = (e) => {
   if (e.keyCode === 13) {
-    fetchAnswer();
+    getAnswer();
   }
 };
 
-document.getElementById('button').addEventListener('click', () => {
-  fetchAnswer();
-});
+button.addEventListener('click', getAnswer);
