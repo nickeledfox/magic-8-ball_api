@@ -79,16 +79,16 @@ body {
   display: block;
 }
 .stars {
-  background: #000 url(../images/stars.png) repeat top center;
+  background: #000 url("/images/stars.png") repeat top center;
   z-index: -103;
 }
 .twinkling {
-  background: transparent url(../images/twinkling.png) repeat top center;
+  background: transparent url("/images/twinkling.png") repeat top center;
   z-index: -102;
   animation: move-twink-back 200s linear infinite;
 }
 .clouds {
-  background: transparent url(../images/clouds.png) repeat top center;
+  background: transparent url("/images/clouds.png") repeat top center;
   z-index: -100;
   animation: move-clouds-back 600s linear infinite;
 }
