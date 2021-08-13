@@ -80,15 +80,3 @@ const handleKeyEnter = (e) => {
 };
 
 button.addEventListener('click', getAnswer);
-
-let params = encodeURIComponent('?');
-let uri = 'https://8ball.delegator.com/magic/JSON/' + params;
-
-const answer = () => {
-  fetch(uri)
-    .then((response) => response.json())
-    .then((answer) => {
-      ballAnswer.innerHTML = answer.answer;
-    });
-};
-answer();
