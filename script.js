@@ -11,6 +11,7 @@ const triangle = document.querySelector('.ball__triangle');
 const ballAnswer = document.getElementById('answer');
 const input = document.getElementById('input');
 const button = document.getElementById('button');
+const shakeSound = new Audio('shake.mp3');
 
 const checkRequest = (value) => {
   isReqInProgress = value;
@@ -25,6 +26,7 @@ const buttonState = (disabling) => {
 };
 
 const cleanInput = () => {
+  shakeSound.pause();
   setTimeout(() => {
     ballAnswer.innerHTML = '';
     input.value = '';
@@ -46,6 +48,7 @@ const showAnswer = (answer) => {
 };
 
 const fetchAnswer = () => {
+  shakeSound.play();
   checkRequest(true);
   buttonState(true);
   ball.classList.add('shake__ball');
