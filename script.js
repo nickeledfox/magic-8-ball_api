@@ -34,7 +34,7 @@ const cleanInput = () => {
     input.value = '';
     checkRequest(false);
     buttonState(false);
-  }, 2000);
+  }, 2700);
 };
 
 const showAnswer = () => {
@@ -73,7 +73,7 @@ const getAdvice = () => {
     fetch(ADVICE_API)
       .then((response) => response.json())
       .then((data) => (ballAnswer.innerHTML = `${data.slip.advice}`));
-  }, 2500);
+  }, 2000);
   showAnswer();
 };
 
