@@ -1,7 +1,8 @@
 'use strict';
 
-//API
-const API_ENDPOINT = 'https://yesno.wtf/api';
+//APIS
+const YESNO_API = 'https://yesno.wtf/api';
+const ADVICE_API = 'https://api.adviceslip.com/advice';
 
 // FLAGS
 let isReqInProgress = false;
@@ -11,6 +12,7 @@ const triangle = document.querySelector('.ball__triangle');
 const ballAnswer = document.getElementById('answer');
 const input = document.getElementById('input');
 const button = document.getElementById('button');
+const btn = document.getElementById('btn');
 const shakeSound = new Audio('shake.mp3');
 
 const checkRequest = (value) => {
@@ -35,16 +37,15 @@ const cleanInput = () => {
   }, 2000);
 };
 
-const showAnswer = (answer) => {
+const showAnswer = () => {
   setTimeout(() => {
-    ballAnswer.innerHTML = `${answer}`;
     ball.classList.remove('shake__ball');
 
     cleanInput();
     setTimeout(() => {
       triangle.classList.remove('show');
     }, 1990);
-  }, 2000);
+  }, 3700);
 };
 
 const fetchAnswer = () => {
@@ -56,10 +57,24 @@ const fetchAnswer = () => {
   setTimeout(() => {
     triangle.classList.add('show');
   }, 1200);
+  setTimeout(() => {
+    fetch(YESNO_API)
+      .then((response) => response.json())
+      .then((data) => (ballAnswer.innerHTML = `${data.answer}`));
+  }, 2000);
+  showAnswer();
+};
 
-  fetch(API_ENDPOINT)
-    .then((response) => response.json())
-    .then((data) => showAnswer(data.answer));
+const getAdvice = () => {
+  ball.classList.add('shake__ball');
+  shakeSound.play();
+
+  setTimeout(() => {
+    fetch(ADVICE_API)
+      .then((response) => response.json())
+      .then((data) => (ballAnswer.innerHTML = `${data.slip.advice}`));
+  }, 2500);
+  showAnswer();
 };
 
 const showError = () => {
@@ -82,4 +97,9 @@ const handleKeyEnter = (e) => {
   }
 };
 
-button.addEventListener('click', getAnswer);
+const askBall = () => {
+  button.addEventListener('click', getAnswer);
+  btn.addEventListener('click', getAdvice);
+};
+
+askBall();
