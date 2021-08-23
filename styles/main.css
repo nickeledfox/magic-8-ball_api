@@ -1,1 +1,135 @@
-*{font-family:Audiowide,cursive}body{background-color:#0b132b;font-size:16px;overflow-y:hidden;background-image:none;height:100vh}.main{display:flex;flex:1 auto;flex-direction:column;justify-content:center;align-items:center;height:100vh}.interaction__container{position:relative;margin-bottom:30px}.input{font-size:1.2rem;padding:10px 10px 10px 0;display:block;width:300px;border:none;border-bottom:1px solid #757575;color:#fff}.input:focus{outline:0}.input~label{position:absolute;font-size:1.6rem;font-weight:700;top:-2.2rem;left:2rem;color:#c6e2ff;animation:flicker 1.2s ease-in-out infinite alternate}.input__bar{position:relative;display:block;content:"";height:2px;width:100%;bottom:1px;position:absolute;background:#c6e1ffe3;box-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #3f04ca,0 0 35px #3f04ca,0 0 40px #3f04ca,0 0 50px #3f04ca,0 0 75px #3f04ca}.input:focus~.input__bar:after,.input:focus~.input__bar:before{width:50%}.input[type=text]{background:0 0;border:none}.button{border:0;border-radius:10px;font-size:1rem;text-transform:uppercase;background:#fff;color:#000;cursor:pointer;padding:.6rem 1rem;margin-top:1rem;margin-bottom:4rem;box-shadow:0 -2px 10px #c6e1ffe3;transition:box-shadow .2s ease;margin:2rem .5rem}.button:hover{box-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 1px #3f04ca,0 0 2px #3f04ca,0 0 2px #3f04ca,0 0 0 #3f04ca,0 0 2px #3f04ca}.button:disabled{color:grey;cursor:not-allowed}.error{position:absolute;color:#fff;margin:.3rem .8rem}@keyframes flicker{from{text-shadow:0 0 6px rgba(202,228,225,.92),0 0 30px rgba(202,228,225,.34),0 0 12px #3f04ca,0 0 21px #3504a8,0 0 34px #503199ab,0 0 54px #3504a8}to{text-shadow:0 0 6px rgba(202,228,225,.98),0 0 30px rgba(202,228,225,.42),0 0 12px rgba(30,132,242,.58),0 0 22px rgba(30,132,242,.84),0 0 38px rgba(30,132,242,.88),0 0 60px #a462f0}}@media (max-width:500px){.interaction__container{margin-bottom:1rem}.input{width:200px;font-size:1rem}.input~label{font-size:1rem;top:-2.2rem;left:1.5rem}.buttons{display:flex;justify-content:center}.button{padding:.6rem .5rem;margin:2rem 0;font-size:.7rem;margin:1rem}.error{margin:.3rem;font-size:.7rem}}
+* {
+  font-family: Audiowide, cursive;
+}
+body {
+  background-color: #0b132b;
+  font-size: 16px;
+  overflow-y: hidden;
+  background-image: none;
+  height: 100vh;
+  
+}
+.main {
+  display: flex;
+  flex: 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  
+}
+.interaction__container {
+  position: relative;
+  margin-bottom: 30px;
+}
+.input {
+  font-size: 1.2rem;
+  padding: 10px 10px 10px 0;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  color: #fff;
+}
+.input:focus {
+  outline: 0;
+}
+.input ~ label {
+  position: absolute;
+  font-size: 1.6rem;
+  font-weight: 700;
+  top: -2.2rem;
+  left: 2rem;
+  color: #c6e2ff;
+  animation: flicker 1.2s ease-in-out infinite alternate;
+}
+.input__bar {
+  position: relative;
+  display: block;
+  content: "";
+  height: 2px;
+  width: 100%;
+  bottom: 1px;
+  position: absolute;
+  background: #c6e1ffe3;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3f04ca,
+    0 0 35px #3f04ca, 0 0 40px #3f04ca, 0 0 50px #3f04ca, 0 0 75px #3f04ca;
+}
+.input:focus ~ .input__bar:after,
+.input:focus ~ .input__bar:before {
+  width: 50%;
+}
+.input[type="text"] {
+  background: 0 0;
+  border: none;
+}
+.button {
+  border: 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 -2px 10px #c6e1ffe3;
+  transition: box-shadow 0.2s ease;
+  margin: 2rem 0.5rem;
+}
+.button:hover {
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 1px #3f04ca,
+    0 0 2px #3f04ca, 0 0 2px #3f04ca, 0 0 0 #3f04ca, 0 0 2px #3f04ca;
+}
+.button:disabled {
+  color: grey;
+  cursor: not-allowed;
+}
+.error {
+  position: absolute;
+  color: #fff;
+  margin: 0.3rem 0.8rem;
+}
+@keyframes flicker {
+  from {
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),
+      0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px #3f04ca, 0 0 21px #3504a8,
+      0 0 34px #503199ab, 0 0 54px #3504a8;
+  }
+  to {
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.98),
+      0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58),
+      0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88),
+      0 0 60px #a462f0;
+  }
+}
+@media (max-width: 500px) {
+  .interaction__container {
+    margin-bottom: 1rem;
+  }
+  .input {
+    width: 200px;
+    font-size: 1rem;
+  }
+  .input ~ label {
+    font-size: 1rem;
+    top: -2.2rem;
+    left: 1.5rem;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+  .button {
+    padding: 0.6rem 0.5rem;
+    margin: 2rem 0;
+    font-size: 0.7rem;
+    margin: 1rem;
+  }
+  .error {
+    margin: 0.3rem;
+    font-size: 0.7rem;
+  }
+}
