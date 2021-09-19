@@ -1,18 +1,24 @@
 'use strict';
 
-//APIS
-const YESNO_API = 'https://yesno.wtf/api';
+let question = encodeURIComponent('?');
+
+//APIs
+let DELEGATOR_API = 'https://8ball.delegator.com/magic/JSON/' + question;
 const ADVICE_API = 'https://api.adviceslip.com/advice';
 
 // FLAGS
 let isReqInProgress = false;
 
+// Ball params
 const ball = document.getElementById('ball');
 const triangle = document.querySelector('.ball__triangle');
 const ballAnswer = document.getElementById('answer');
 const input = document.getElementById('input');
+
+const buttons = document.querySelectorAll('button');
 const button = document.getElementById('button');
 const btn = document.getElementById('btn');
+
 const shakeSound = new Audio('shake.mp3');
 
 const checkRequest = (value) => {
@@ -21,9 +27,13 @@ const checkRequest = (value) => {
 
 const buttonState = (disabling) => {
   if (disabling) {
-    button.setAttribute('disabled', 'disabled');
+    buttons.forEach((button) => {
+      button.setAttribute('disabled', 'disabled');
+    });
   } else {
-    button.removeAttribute('disabled');
+    buttons.forEach((button) => {
+      button.removeAttribute('disabled');
+    });
   }
 };
 
@@ -58,14 +68,16 @@ const fetchAnswer = () => {
     triangle.classList.add('show');
   }, 1200);
   setTimeout(() => {
-    fetch(YESNO_API)
+    fetch(DELEGATOR_API)
       .then((response) => response.json())
-      .then((data) => (ballAnswer.innerHTML = `${data.answer}`));
+      .then((data) => (ballAnswer.innerHTML = `${data.magic.answer}`));
   }, 2000);
   showAnswer();
 };
 
 const getAdvice = () => {
+  checkRequest(true);
+  buttonState(true);
   ball.classList.add('shake__ball');
   shakeSound.play();
 
