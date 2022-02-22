@@ -9,6 +9,6 @@ Used:
 - [Delegator API](https://8ball.delegator.com/)
 - [Advice Slip JSON API](https://api.adviceslip.com/)
 
-[- Live Preview](https://mia-7-7.github.io/magic-8-ball_api/)
+[- Live Preview](https://nickeledfox.github.io/magic-8-ball_api/)
 
 ![](demo/ezgif.com-gif-maker.gif)
